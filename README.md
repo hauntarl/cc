@@ -4,7 +4,7 @@ The CSES Problem Set is a collection of algorithmic programming problems. Refer 
 
 If you are new to competitive programming or need a thorough introduction to the basic concepts, terminologies and algorithms. Refer [Competitive Programmer’s Handbook](https://cses.fi/book/book.pdf) by *Antti Laaksonen*. It is a free online book which goes hand in hand with the CSES Problem Set.
 
->All the benchmarks are generated using [PyPy - Python Interpreter](https://realpython.com/pypy-faster-python/) with the help of *[util.py](https://github.com/hauntarl/real-python/blob/master/cp/util.py)*
+>All the benchmarks are generated using [PyPy - Python Interpreter](https://realpython.com/pypy-faster-python/) with the help of *[util.py](https://github.com/hauntarl/cc/blob/main/util.py)*
 
 ## Resources
 
@@ -13,8 +13,8 @@ If you are new to competitive programming or need a thorough introduction to the
 
 ## Examples
 
-- *[fibonacci.py](https://github.com/hauntarl/real-python/blob/master/cp/fibonacci.py)*
-- *[max_subarray_sum.py](https://github.com/hauntarl/real-python/blob/master/cp/max_subarray_sum.py)*
+- *[fibonacci.py](https://github.com/hauntarl/cc/blob/main/fibonacci.py)*
+- *[max_subarray_sum.py](https://github.com/hauntarl/cc/blob/main/max_subarray_sum.py)*
 
 ### Time Complexity - Estimating efficiency
 
