@@ -5,7 +5,7 @@ from util import timeit
 def creating_strings(inp: list[str], beg: int, func) -> None:
     """
     [Easy] https://cses.fi/problemset/task/1622
-    [Solution] https://cses.fi/problemset/result/4779301/
+    [Solution] https://cses.fi/paste/059e689c1b570c3548ed25/
 
     Given a string, your task is to generate all different strings that can be 
     created using its characters.
