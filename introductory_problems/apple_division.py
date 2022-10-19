@@ -5,8 +5,8 @@ from sys import maxsize
 @timeit
 def apple_division(inp: list[int]) -> None:
     """
-    [Easy] https://cses.fi/problemset/task/1623
-    [Solution] https://cses.fi/problemset/result/4799511/
+    [Medium] https://cses.fi/problemset/task/1623
+    [Solution] https://cses.fi/paste/17511119ef1ef8bd493c17/
 
     There are n apples with known weights. Your task is to divide the apples 
     into two groups so that the difference between the weights of the groups 
