@@ -27,7 +27,8 @@ def chessboard_and_queens(board, queens, row_id) -> int:
 
     How many possible ways are there to place the queens?
 
-    The input has eight lines, and each of them has eight characters. Each square is either free (.) or reserved (*).
+    The input has eight lines, and each of them has eight characters. Each 
+    square is either free (.) or reserved (*).
 
     Print one integer: the number of ways you can place the queens.
 
