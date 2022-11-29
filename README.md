@@ -106,3 +106,116 @@ A data structure is a way to store data in the memory of a computer. It is impor
 - **sortedcontainers.SortedSet:** the values are always in a sorted order, eg. *[restaurant_customer.py](https://github.com/hauntarl/cc/blob/main/sorting_and_searching/restaurant_customer.py)*
 
 > NOTE: `sortedcontainers` is available in **LeetCode** and **CodeSignal** coding environments.
+
+## Complete Search
+
+Complete search is a general method that can be used to solve almost any algorithm problem. The idea is to generate all possible solutions to the problem using brute force, and then select the best solution or count the number of solutions, depending on the problem.
+
+Complete search is a good technique if there is enough time to go through all the solutions, because the search is usually easy to implement and it always gives the correct answer. If complete search is too slow, other techniques, such as greedy algorithms or dynamic programming, may be needed.
+
+### Generating Subsets
+
+We first consider the problem of generating all subsets of a set of n elements. For example, the subsets of `{0,1,2}` are `None`, `{0}`, `{1}`, `{2}`, `{0,1}`, `{0,2}`, `{1,2}` and `{0,1,2}`. There are two common methods to generate subsets: we can either perform a recursive search or exploit the bit representation of integers.
+
+#### Method 1 - Recursive Search
+
+``` python
+n, subset, combs = 3, [], []
+
+
+def search(i: int) -> None:
+    if i == n:
+        combs.append(tuple(subset))
+        return
+
+    search(i + 1)
+    subset.append(i)
+    search(i + 1)
+    subset.pop()
+
+
+search(0)
+print(combs)
+""" terminal
+[(), (2,), (1,), (1, 2), (0,), (0, 2), (0, 1), (0, 1, 2)]
+"""
+```
+
+#### Method 2 - Bit Representation
+
+Another way to generate subsets is based on the bit representation of integers. Each subset of a set of `n` elements can be represented as a sequence of `n` bits, which corresponds to an integer between `0...2^n − 1`. The ones in the bit sequence indicate which elements are included in the subset.
+
+The usual convention is that the last bit corresponds to element `0`, the second last bit corresponds to element `1`, and so on. For example, the bit representation of `25` is `11001`, which corresponds to the subset `{0,3,4}`.
+
+``` python
+n, combs = 3, []
+
+for i in range(1 << n):
+    subset = []
+    for j in range(i):
+        if i & (1 << j):
+            subset.append(j)
+    combs.append(tuple(subset))
+
+print(combs)
+""" terminal
+[(), (0,), (1,), (0, 1), (2,), (0, 2), (1, 2), (0, 1, 2)]
+"""
+```
+
+#### Method 3 - Built-in
+
+``` python
+from itertools import combinations
+
+items, combs = [0, 1, 2], []
+for i in range(len(items) + 1):
+    combs.extend(combinations(items, i))
+
+print(combs)
+""" terminal
+[(), (0,), (1,), (2,), (0, 1), (0, 2), (1, 2), (0, 1, 2)]
+"""
+```
+
+### Generating Permutations
+
+Next we consider the problem of generating all permutations of a set of `n` elements. For example, the permutations of `{0,1,2}` are `(0,1,2)`, `(0,2,1)`, `(1,0,2)`, `(1,2,0)`, `(2,0,1)` and `(2,1,0)`.
+
+#### Method 1 - Recursive
+
+``` python
+from typing import Callable
+
+
+def permutations(items: list, i: int, process: Callable[[tuple], None]) -> None:
+    if i == len(items):
+        process(tuple(items))
+        return
+
+    permutations(items, i + 1, process)
+    for j in range(i + 1, len(items)):
+        items[i], items[j] = items[j], items[i]
+        permutations(items, i + 1, process)
+        items[i], items[j] = items[j], items[i]
+
+
+perms = []
+permutations([0, 1, 2], 0, process=lambda items: perms.append(items))
+print(perms)
+""" terminal
+[(0, 1, 2), (0, 2, 1), (1, 0, 2), (1, 2, 0), (2, 1, 0), (2, 0, 1)]
+"""
+```
+
+#### Method 2 - Built-in
+
+``` python
+from itertools import permutations
+
+items, perms = [0, 1, 2], []
+print(list(permutations(items, len(items))))
+""" terminal
+[(0, 1, 2), (0, 2, 1), (1, 0, 2), (1, 2, 0), (2, 0, 1), (2, 1, 0)]
+"""
+```
