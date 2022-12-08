@@ -10,6 +10,7 @@ If you are new to competitive programming or need a brief introduction to the ba
 
 - CSES [Problem Set](https://cses.fi/problemset/)
 - Competitive programming [books](https://cses.fi/book/index.php)
+- Top 50 Dynamic Programming [Practice Problems](https://medium.com/techie-delight/top-50-dynamic-programming-practice-problems-4208fed71aa3)
 
 ## Examples
 
