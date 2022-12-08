@@ -19,7 +19,7 @@ Y: BDCABA
 The length of the LCS is 4
 LCS are BDAB, BCAB, and BCBA
 """
-from util import timeit
+from util import timeit, draw_memo
 
 
 def lcs(a: str, b: str, i: int, j: int, memo: dict) -> int:
@@ -53,6 +53,7 @@ def lcs_bottomup(a: str, b: str) -> int:
             else:
                 memo[i][j] = memo[i][j - 1]
 
+    draw_memo(' ' + a, ' ' + b, memo)
     return memo[-1][-1]
 
 
@@ -65,3 +66,42 @@ if __name__ == '__main__':
 
     lcs_bottomup('BDCABA', 'ABCBDAB')
     lcs_bottomup('HIEROGLYPHOLOGY', 'MICHAELANGELO')  # HELLO - count=5
+
+    """ terminal
+    run lcs_topdown('BDCABA', 'ABCBDAB')
+    got 4 in 0.0000297501 secs.
+
+    run lcs_topdown('HIEROGLYPHOLOGY', 'MICHAELANGELO')
+    got 5 in 0.0001200000 secs.
+
+    run lcs_bottomup('BDCABA', 'ABCBDAB')
+            A   B   C   B   D   A   B
+        0   0   0   0   0   0   0   0
+    B   0   0   1   1   1   1   1   1
+    D   0   0   1   1   1   2   2   2
+    C   0   0   1   2   2   2   2   2
+    A   0   1   1   2   2   2   3   3
+    B   0   1   2   2   3   3   3   4
+    A   0   1   2   2   3   3   4   4
+    got 4 in 0.0000767920 secs.
+
+    run lcs_bottomup('HIEROGLYPHOLOGY', 'MICHAELANGELO')
+            M   I   C   H   A   E   L   A   N   G   E   L   O
+        0   0   0   0   0   0   0   0   0   0   0   0   0   0
+    H   0   0   0   0   1   1   1   1   1   1   1   1   1   1
+    I   0   0   1   1   1   1   1   1   1   1   1   1   1   1
+    E   0   0   1   1   1   1   2   2   2   2   2   2   2   2
+    R   0   0   1   1   1   1   2   2   2   2   2   2   2   2
+    O   0   0   1   1   1   1   2   2   2   2   2   2   2   3
+    G   0   0   1   1   1   1   2   2   2   2   3   3   3   3
+    L   0   0   1   1   1   1   2   3   3   3   3   3   4   4
+    Y   0   0   1   1   1   1   2   3   3   3   3   3   4   4
+    P   0   0   1   1   1   1   2   3   3   3   3   3   4   4
+    H   0   0   1   1   2   2   2   3   3   3   3   3   4   4
+    O   0   0   1   1   2   2   2   3   3   3   3   3   4   5
+    L   0   0   1   1   2   2   2   3   3   3   3   3   4   5
+    O   0   0   1   1   2   2   2   3   3   3   3   3   4   5
+    G   0   0   1   1   2   2   2   3   3   3   4   4   4   5
+    Y   0   0   1   1   2   2   2   3   3   3   4   4   4   5
+    got 5 in 0.0001853750 secs.
+    """
