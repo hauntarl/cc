@@ -16,7 +16,7 @@ If you are new to competitive programming or need a brief introduction to the ba
 
 - *[fibonacci.py](https://github.com/hauntarl/cc/blob/main/fibonacci.py)*
 - *[max_subarray_sum.py](https://github.com/hauntarl/cc/blob/main/max_subarray_sum.py)*
-- *[largest_common_subsequence.py](https://github.com/hauntarl/cc/blob/main/largest_common_subsequence.py)*
+- *[longest_common_subsequence.py](https://github.com/hauntarl/cc/blob/main/dynamic_programming_top50/longest_common_subsequence.py)*
 
 > NOTE: The following are mostly excerpts from the [Competitive Programmer’s Handbook](https://cses.fi/book/book.pdf) by *Antti Laaksonen*.
 
